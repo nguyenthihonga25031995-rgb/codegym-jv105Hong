@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Form sở thích</title>
+    <style>
+        fieldset {
+            width: 500px;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 50px auto;
+        }
+        legend {
+            margin: 0 auto;            /*căn giữa*/
+            padding: 5px 15px;
+            border: 1px solid black;  /*tạo ô*/
+            background: orange;
+            text-align: center;
+            color:white;
+        }
+        /*dùng cho mỗi row*/
+        .row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        label {
+            width: 100px;
+            color: blue;
+        }
+        table {
+            color: orange;
+        }
+input[type="submit"] {margin-right: 10px;}
+    </style>
+</head>
+<body>
+
+    <form action="/action_page.php" method="post">
+        <fieldset>
+            <legend>Sở thích của bạn</legend>
+            <div class="row">
+            <label for="Họ và tên">Họ và tên:</label>
+            <input type="text" name="fullname">
+            </div>
+             <div class="row">
+            <label for="email">Email:</label>
+            <input type="email" name="email">
+            </div>
+
+             <div class="row">
+            <label for="hobby">Sở thích:</label>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="Thể thao"> Thể thao</td>
+                    <td><input type="checkbox" name="hobby" value="Âm nhạc"> Âm nhạc</td>
+                    <td><input type="checkbox" name="hobby" value="Đọc sách"> Đọc sách</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="Lướt web"> Lướt web</td>
+                    <td><input type="checkbox" name="hobby" value="Chơi game"> Chơi game</td>
+                    <td><input type="checkbox" name="hobby" value="Điện ảnh"> Điện ảnh</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="Du lịch"> Du lịch</td>
+                </tr>
+            </table>
+            </div>
+            <div class="row">
+                <label></label>
+            <input type="submit" value="Gửi thông tin">
+            <input type="reset" value="Nhập lại">
+            </div>
+        </fieldset>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>ĐĂNG KÝ HỌC VIÊN</title>
+    <style>
+        fieldset {
+            width: 500px;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 50px auto;
+        }
+        legend {
+            margin-right: auto;           /*căn trái*/
+            padding: 5px 15px;
+            border: 1px solid black;  /*tạo ô*/
+            background-color: #90FCF5;
+            text-align: center;
+            color: blue;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        /*dùng cho mỗi row*/
+        .row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        label {
+            width: 100px;
+            color: blue;
+        }
+        input[type="submit"] {margin-right: 10px;}
+        </style>
+</head>
+<body>
+<form action="/action_page.php" method="post">
+        <fieldset>
+            <legend>ĐĂNG KÝ HỌC VIÊN</legend>
+            <div class="row">
+                <label for="Họ và tên">Họ và tên</label>
+                <input type="text" name="fullname">
+            </div>
+            <div class="row">
+                <label for="Ngày sinh">Ngày sinh</label>
+                <input type="text" id="birthday" name="birthday">
+            </div>
+            <div class="row">
+                <label for="Giới tính">Giới tính</label>
+                <input type="radio" id="male" name="gender" value="male"> Nam
+                <input type="radio" id="female" name="gender" value="female"> Nữ
+            </div>
+            <div class="row">
+                <label for="Địa chỉ">Địa chỉ</label>
+                <input type="text" name="address">
+            </div>
+            <div class="row">
+                <label for="Lớp">Lớp</label>
+                <select name="class">
+                    <option value="10A">10A</option>
+                    <option value="10B">10B</option>
+                    <option value="11A">11A</option>
+                    <option value="11B">11B</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="Email">Email</label>
+                <input type="email" name="email">
+            </div>
+            <div class="row">
+                <label for="Điện thoại">Điện thoại</label>
+                <input type="tel" name="phone">
+            </div>
+            <div class="row">
+                <label></label>
+                <input type="submit" value="Đăng ký">
+                <input type="reset" value="Nhập lại">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
