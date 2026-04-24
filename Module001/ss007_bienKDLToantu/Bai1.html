@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình</title>
+</head>
+<body>
+<h1>Tính điểm trung bình</h1>
+<script>
+    // Lấy điểm số từ người dùng
+    let score1 = parseFloat(prompt("Nhập điểm Toán:"));
+    let score2 = parseFloat(prompt("Nhập điểm Lý:"));
+    let score3 = parseFloat(prompt("Nhập điểm Hoá:"));
+
+    // Tính điểm trung bình
+    let average = (score1 + score2 + score3) / 3;
+
+    // Hiển thị kết quả
+    document.write("Điểm trung bình là: " + average.toFixed(2));
+</script>
+</body>
+</html>
