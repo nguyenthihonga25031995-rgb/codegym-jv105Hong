@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chu vi và diện tích hình chữ nhật</title>
+    </head>
+    <body>
+        <h1>Chu vi hình chữ nhật</h1>
+        <script>
+            // Lấy chiều dài và chiều rộng từ người dùng
+            let length = parseFloat(prompt("Nhập chiều dài của hình chữ nhật:"));
+            let width = parseFloat(prompt("Nhập chiều rộng của hình chữ nhật:"));
+
+            // Tính chu vi
+            let perimeter = 2 * (length + width);
+
+            // Hiển thị kết quả
+            document.write("Chu vi của hình chữ nhật là: " + perimeter);
+        </script>
+        <h1>Diện tích hình chữ nhật</h1>
+        <script>
+            // Tính diện tích
+            let area = length * width;
+
+            // Hiển thị kết quả
+            document.write("Diện tích của hình chữ nhật là: " + area );
+        </script>
+    </body>
+</html>
