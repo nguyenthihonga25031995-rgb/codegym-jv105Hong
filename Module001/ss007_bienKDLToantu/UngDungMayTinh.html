@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng máy tính</title>
+</head>
+<style>
+    .row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 10px;
+    }
+    .row span, .row input {
+        width: 120px;
+    }
+</style>
+<body>
+    <h1>Calculator</h1>
+    <div class="row">
+        <input type="number" id="num1" placeholder="Số thứ nhất">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="num2" placeholder="Số thứ hai">
+        <button onclick="calculate()">Calculate</button>
+    </div>
+    <p id="result"></p>
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = "Invalid operator";
+            }
+            document.getElementById("result").innerText = "Result: " + result.toFixed(2);
+        }
+    </script>
+</body>
+</html>
