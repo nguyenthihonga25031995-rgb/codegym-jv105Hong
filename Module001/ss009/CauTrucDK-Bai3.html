@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cấu trúc điều kiện - Bài 3</title>
+</head>
+<body>
+    <h1>Cấu trúc điều kiện - Bài 3</h1>
+    <p>Nhập một số nguyên bất kỳ, in ra kết quả để xác định số đó lớn hơn, nhỏ hơn hay bằng 0.</p> 
+    <form>
+        <label for="number">Nhập số nguyên:</label>
+        <input type="number" id="number" name="number" required>
+        <button type="submit">Kiểm tra</button>
+        <div id="result"></div>
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const number = parseInt(document.getElementById('number').value);
+            let result = '';
+            if (number > 0) {
+                result = 'Số ' + number + ' lớn hơn 0.';
+            } else if (number < 0) {
+                result = 'Số ' + number + ' nhỏ hơn 0.';
+            } else {
+                result = 'Số bạn nhập là 0.';
+            }
+            document.getElementById('result').textContent = result;
+        });
+    </script>
+</body>
+</html>
