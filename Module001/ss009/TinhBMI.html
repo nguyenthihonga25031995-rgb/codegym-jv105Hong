@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tính BMI</title>
+        <style>
+            .form-group{
+               display: grid;
+               grid-template-columns: 180px 250px;
+               gap: 10px 12px;
+               margin-bottom: 16px;
+            }
+            button{
+                margin-bottom: 16px;
+            }
+            #result{
+                margin-top: 16px;
+                font-weight: bold;
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+      <h1>TÍNH CHỈ SỐ BMI (DÀNH CHO NGƯỜI TRƯỜNG THÀNH)</h1>  
+      <div class="form-group">
+      <label for="weight"> Nhập cân nặng (kg)</label>
+      <input type="number" id="weight" placeholder="Cân nặng (kg)">
+      </div>
+      <div class="form-group">
+      <label for="height"> Nhập chiều cao (cm)</label>
+      <input type="number" id="height" placeholder="Chiều cao (cm)">
+      </div>
+      <button onclick="calculateBMI()">Tính</button>
+      <div id="result"></div>
+      <script>
+        function calculateBMI(){
+            let height=document.getElementById("height").value;
+            let weight=document.getElementById("weight").value;
+            document.getElementById("result").innerText="";
+            if (!height||!weight){
+                document.getElementById("result").innerText="Vui lòng nhập đầy đủ!";
+                return;
+            }
+            height=parseFloat(height);
+            weight=parseFloat(weight);
+            if (height<=0||weight<=0){
+                alert("Chiều cao và cân nặng phải >0");
+                return;
+            }
+            height=height/100;//cm -> m
+            let BMI=weight/(height*height);
+            BMI=BMI.toFixed(2);
+            let comment="";
+            if (BMI<18.5) comment="Gầy đét luôn bro, ăn dô";
+            else if (BMI <25) comment = "Ngon đấy, giữ dáng và tập thể dục đều đặn nhé";
+            else if (BMI<=30) comment = "Hơi chuppy, tập thể dục thêm đi!";
+            else comment ="Béo phì rồi, bớt trả sữa, bánh ngọt, tập thể dục vàoooooooo";
+            document.getElementById("result").innerText="BMI của bạn là: " + BMI + " . " + comment + ".";
+        }
+      </script>
+    </body>
+</html>

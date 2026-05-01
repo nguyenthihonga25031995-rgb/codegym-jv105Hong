@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h1>Kiểm tra số ngày trong tháng</h1>
+<form>
+    <label for="month">Nhập tháng:</label>
+    <input type="number" id="month" name="month" min="1" max="12" required>
+    <input type="submit" value="Kiểm tra">
+</form>
+<div id="result"></div>
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const month = parseInt(document.getElementById('month').value);
+        let days;
+        switch (month) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                days = 31;
+                break;
+            case 4: case 6: case 9: case 11:
+                days = 30;
+                break;
+            case 2:
+                days = '28 hoặc 29 (năm nhuận)';
+                break;
+            default:
+                days = 'Tháng không hợp lệ';
+        }
+        document.getElementById('result').textContent = `Tháng ${month} có ${days} ngày.`;
+    });
+</script>
+</body>
+</html>
