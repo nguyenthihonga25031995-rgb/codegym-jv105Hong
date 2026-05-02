@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cấu trúc điều kiện 02- Bài 11</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            color: #555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .section-title {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        #result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tính thuế TNCN theo tháng năm 2026</h2>
+        <div class ="section-title"> Thu nhập & Phụ cấp</div>
+            <div class="form-group">
+            <label for="income"> Tổng thu nhập (Gross):</label>
+            <input type="number" id="income" class="form-control" placeholder="VD: 10000000">
+            <label for="allowance"> Phụ cấp (Là khoản miễn thuế: ví dụ phụ cấp ăn uống, xăng xe,...):</label>
+            <input type="number" id="allowance" class="form-control" placeholder="VD: 2000000">
+            </div>  
+        <div class="section-title"> Giảm trừ gia cảnh</div>
+            <div class="form-group">
+            <label for="dependent-deduction"> Số người phụ thuộc:</label>
+            <input type="number" id="dependent-deduction" class="form-control" placeholder="VD: 4" min="0">
+            </div>
+        <div class="section-title"> Bảo hiểm </div>
+        <div class="form-group">
+        <label for="insurance-deduction"> Số tiền đóng bảo hiểm:</label>
+        <input type="number" id="insurance-deduction" class="form-control" placeholder="VD: 1500000">
+    </div>
+    <button onclick="CalculateTax()">Tính thuế</button>
+    <div id="result">
+        <div class="result-row"><span> Thu nhập chịu thuế:</span><span id="taxableIncome">0</span></div>
+        <div class="result-row"><span> Tổng giảm trừ gia cảnh (đã bao gồm giảm trừ cá nhân):</span><span id="totalDeduction">0</span></div>
+        <div class="result-row"><span> Thu nhập tính thuế:</span><span id="taxIncome">0</span></div>
+        <div class="result-row"><span> Thuế TNCN phải nộp:</span><span id="finalTax">0</span></div>
+    </div>
+    <script>
+        function formatMoney(num) {
+        return num.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        }
+        function CalculateTax() {
+            document.getElementById('result').style.display = 'block';
+            // Lấy giá trị từ các input
+            const income = parseFloat(document.getElementById('income').value) || 0;
+            const allowance = parseFloat(document.getElementById('allowance').value) || 0;
+            const dependentDeduction = parseInt(document.getElementById('dependent-deduction').value) || 0;
+            const insuranceDeduction = parseFloat(document.getElementById('insurance-deduction').value) || 0;
+            // Các khoản giảm trừ
+            const personalDeduction = 15500000; // Mức giảm trừ cá nhân
+            const dependentDeductionAmount = dependentDeduction * 6200000; // Mức giảm trừ cho mỗi người phụ thuộc
+            const totalDeduction = personalDeduction + dependentDeductionAmount + insuranceDeduction;
+            // Thu nhập chịu thuế
+            const taxableIncome = income - allowance;
+            // Thu nhập tính thuế
+            const taxIncome = taxableIncome - totalDeduction;
+            // Thuế TNCN phải nộp
+            let finalTax = 0;
+            if (taxIncome > 0) {
+                if (taxIncome <= 10000000) {
+                    finalTax = taxIncome * 0.05;
+                } else if (taxIncome <= 30000000) {
+                    finalTax = taxIncome* 0.1- 500000;
+                } else if (taxIncome <= 60000000) {
+                    finalTax = taxIncome * 0.2 - 3500000;
+                }else if (taxIncome <= 100000000) {
+                    finalTax = taxIncome * 0.3 - 9500000;
+                } else {
+                    finalTax = taxIncome * 0.35 - 14500000;
+                }
+            }
+            // Hiển thị kết quả
+            document.getElementById('taxableIncome').textContent = formatMoney(taxableIncome);
+            document.getElementById('totalDeduction').textContent = formatMoney(totalDeduction);
+            document.getElementById('taxIncome').textContent = formatMoney(taxIncome);
+            document.getElementById('finalTax').textContent = formatMoney(finalTax);
+        }
+    </script>
+</body>
+</html>

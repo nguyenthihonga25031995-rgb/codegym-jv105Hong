@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cấu trúc điều kiện 02- Bài 2</title>
+</head>
+<body>
+    <h1>Cấu trúc điều kiện 02 - Bài 2</h1>
+    <p>Đổi mét sang feet</p>
+    <form>  
+        <label for="meters">Nhập số mét:</label>  
+        <input type="number" id="meters" name="meters">  
+        <button type="button" onclick="convertToFeet()">Chuyển đổi</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function convertToFeet() {
+            let meters = document.getElementById("meters").value;
+        if (meters === "") {
+            document.getElementById("result").innerText = "Vui lòng nhập số mét.";
+        } else {
+            let feet = meters * 3.2808;
+            document.getElementById("result").innerText = meters + " mét bằng " + feet.toFixed(2) + " feet.";
+        }
+        }
+    </script>
+</body>
+</html>

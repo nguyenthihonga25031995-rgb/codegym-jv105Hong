@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cấu trúc điều kiện 02 - Bài 9</title>
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cấu trúc điều kiện 02 - Bài 9</h1>
+    <p> Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác.</p>
+    <form>
+        <div class="form-group">
+            <label for="a">Nhập cạnh a:</label>
+            <input type="number" id="a" name="a">
+        </div>
+        <div class="form-group">
+            <label for="b">Nhập cạnh b:</label>
+            <input type="number" id="b" name="b">
+        </div>
+        <div class="form-group">
+            <label for="c">Nhập cạnh c:</label>
+            <input type="number" id="c" name="c">
+        </div>
+        <button type="button" onclick="kiemTraTamGiac()">Kiểm tra</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function kiemTraTamGiac() {
+            let a = parseFloat(document.getElementById("a").value);
+            let b = parseFloat(document.getElementById("b").value);
+            let c = parseFloat(document.getElementById("c").value);
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById("result").innerText = "Vui lòng nhập đầy đủ và hợp lệ các giá trị.";
+            } else if (a <= 0 || b <= 0 || c <= 0) {
+                document.getElementById("result").innerText = "Các cạnh phải là số dương.";
+            } else if (a + b <= c || a + c <= b || b + c <= a) {
+                document.getElementById("result").innerText = "Ba số nhập vào không phải là cạnh của một tam giác.";
+            } else {
+                document.getElementById("result").innerText = "Ba số nhập vào là cạnh của một tam giác.";
+            }
+        }
+    </script>
+</body>
+</html>
