@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc lặp 1</title>
+</head>
+<body>
+    <h2>Cấu trúc lặp 1</h2>
+    <p> Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên.</p>
+    <script>
+        let sum = 0, count = 0, num = 0;
+        while (count < 30) {
+            if (num % 7 === 0) {
+                sum += num;
+                count++;
+            }
+            num++;
+        }
+        console.log("Tổng của 30 số chia hết cho 7 đầu tiên là: " + sum);
+    </script>
+</body>
+</html>

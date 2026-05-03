@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc lặp 2</title>
+</head>
+<body>
+    <h2>Cấu trúc lặp 2</h2>
+    <p>Tìm số đầu tiên trong dãy fibonacci chia hết cho 5.</p>
+    <script>
+        let a = 0, b = 1;
+        while (true) {
+            if (a % 5 === 0) {
+                console.log("Số đầu tiên trong dãy fibonacci chia hết cho 5 là: " + a);
+                break;
+            }
+            let temp = a + b;
+            a = b;
+            b = temp;
+        }
+    </script>
+</body>
+</html>

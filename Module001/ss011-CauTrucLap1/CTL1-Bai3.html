@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc lặp 1</title>
+</head>
+<body>
+    <h2>Cấu trúc lặp 1</h2>
+    <p>Hiển thị 20 số đầu tiên trong dãy fibonacci</p>
+    <script>
+        let a = 0, b = 1;
+        for (let i = 0; i < 20; i++) {
+            console.log(a);
+            let temp = a + b;
+            a = b;
+            b = temp;
+        }
+    </script>
+</body>
+</html>
