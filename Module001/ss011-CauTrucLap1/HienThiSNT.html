@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển thị số nguyên tố</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h2> Số lượng số nguyên tố đầu tiên muốn hiển thị</h2>
+<input type="number" id="count" min="1" placeholder="Nhập số lượng">
+<button onclick="displayPrimes()">Hiển thị</button>
+<div id="result"></div>
+<script>
+    function isPrime(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    function displayPrimes() {
+        const count = parseInt(document.getElementById('count').value);
+        let primes = [];
+        let num = 2; // Số nguyên dương đầu tiên
+
+        while (primes.length < count) {
+            if (isPrime(num)) {
+                primes.push(num);
+            }
+            num++;
+        }
+
+        document.getElementById('result').textContent = `Các số nguyên tố đầu tiên: ${primes.join(', ')}`;
+    }
+</script>
+</body>
+</html>
