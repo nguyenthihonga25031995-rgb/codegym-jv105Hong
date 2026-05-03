@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc lặp 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .btn-play {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btnStart, .btnGuess, #btnPlayAgain {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex; 
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .modal h2 {
+            margin-top: 20px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .input-group input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        #hint {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="mainContent">
+            <div class="title"> HÃY THỬ ĐOÁN XEM </div>
+            <p class="subtitle"> Bạn có 3 lần đoán, liệu may mắn có mỉm cười?</p>
+            <div class="card">
+                <button class="btn-play" id="btnPlay"> CHƠI </button>
+            </div>
+        </div>
+        <!-- Modal: Chọn khoảng --> 
+        <div class="modal" id="modalChooseRange">
+            <div class="modal-content">
+                <h2>Chọn khoảng số</h2>
+                <label> Nhập số bắt đầu và kết thúc: </label>
+                <div class="input-group">
+                <input type="number" id="start" placeholder="Từ">
+                <input type="number" id="end" placeholder="Đến">
+                </div>
+                <button id="btnStart" class="btnStart"> BẮT ĐẦU </button>
+            </div>
+    </div>
+        <!-- Modal: Nhập dự đoán -->
+        <div class="modal" id="modalGuess">
+            <div class="modal-content">
+                <h2>Nhập số bạn đoán</h2>
+                <input type="number" id="guessInput" placeholder="Số bạn đoán">
+                <button id="btnGuess"> ĐOÁN </button>
+                <p id="hint"></p>
+            </div>
+        </div>
+        
+        <!-- Modal: Kết quả -->
+        <div class="modal" id="modalResult">
+            <div class="modal-content">
+                <h2>Kết quả</h2>
+                <p id="resultMessage"></p>
+                <button id="btnPlayAgain"> ĐÓNG </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const btnPlay = document.getElementById('btnPlay');
+        const modalChooseRange = document.getElementById('modalChooseRange');
+        const mainContent = document.getElementById('mainContent');
+        const btnStart = document.getElementById('btnStart');
+        const modalGuess = document.getElementById('modalGuess');
+        const btnGuess = document.getElementById('btnGuess');
+        const hint = document.getElementById('hint');
+        const modalResult = document.getElementById('modalResult');
+        const resultMessage = document.getElementById('resultMessage');
+        const btnPlayAgain = document.getElementById('btnPlayAgain');
+        let randomNumber;
+        let attempts = 3;
+        // Start game
+        btnPlay.addEventListener("click", function () {
+            modalChooseRange.classList.add('active'); // show modal chọn khoảng
+             mainContent.style.display = "none"; // ẩn nội dung chính
+        });
+        // Generate random number
+        btnStart.addEventListener('click', () => {
+            const start = parseInt(document.getElementById('start').value);
+            const end = parseInt(document.getElementById('end').value);
+            if (isNaN(start) || isNaN(end) || start >= end) {
+                alert('Vui lòng nhập khoảng hợp lệ!');
+                return;
+            }
+            randomNumber = Math.floor(Math.random() * (end - start + 1)) + start;
+            attempts = 3;
+            hint.textContent = '';
+            modalChooseRange.classList.remove('active'); // ẩn modal chọn khoảng
+            modalGuess.classList.add('active');
+        });
+        // Handle guess
+        btnGuess.addEventListener('click', () => {
+            const guess = parseInt(document.getElementById('guessInput').value);
+            if (isNaN(guess)) {
+                alert('Vui lòng nhập một số hợp lệ!');
+                return;
+            }
+            attempts--;
+            if (guess === randomNumber) {
+                resultMessage.textContent = `Chúc mừng! Bạn đã đoán đúng số ${randomNumber} với ${3 - attempts} lần đoán.`;
+                modalGuess.classList.remove('active');
+                modalResult.classList.add('active');
+            } else if (attempts > 0) {
+                hint.textContent = guess < randomNumber ? 'Số bạn đoán quá nhỏ!' : 'Số bạn đoán quá lớn!';
+            } else {
+                resultMessage.textContent = `Rất tiếc! Bạn đã hết lượt đoán. Số đúng là ${randomNumber}.`;
+                modalGuess.classList.remove('active');
+                modalResult.classList.add('active');
+            }
+        });
+        // Play again
+        btnPlayAgain.addEventListener('click', () => {
+            modalResult.classList.remove('active');
+            mainContent.style.display = "block"; // hiển thị lại nội dung chính
+
+        //Reset input và hint 
+            document.getElementById('start').value = '';
+            document.getElementById('end').value = '';
+            document.getElementById('guessInput').value = '';
+            hint.textContent = '';
+                });
+    </script>
+</body>
+</html>
