@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc lặp 1</title>
+</head>
+<body>
+    <h2>Cấu trúc lặp 1</h2>
+    <p> Tính tổng của 20 số đầu tiên trong dãy fibonacci.</p>
+    <script>
+        let a = 0, b = 1, sum = 0;
+        for (let i = 0; i < 20; i++) {
+            sum += a;
+            let temp = a + b;
+            a = b;
+            b = temp;
+        }
+        console.log("Tổng của 20 số đầu tiên trong dãy fibonacci là: " + sum);
+    </script>
+</body>
+</html>
