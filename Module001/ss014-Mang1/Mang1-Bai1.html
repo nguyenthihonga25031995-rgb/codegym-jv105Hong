@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng 1- Bài 1</title>
+</head>
+<body>
+    <script>
+        let n = [];
+        let count = 0;
+        for (let i = 0; i < 10; i++) {
+            n[i] = parseInt(prompt("Nhập phần tử thứ " + (i + 1) + ":"));
+            if (n[i] >= 10) {
+                count++;
+            }
+        }
+        console.log("Số lượng phần tử lớn hơn hoặc bằng 10 trong mảng là: " + count);
+    </script>
+</body>
+</html>
