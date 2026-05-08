@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTL2-Bai5</title>
+</head>
+<body>
+<h2> In hình trái tim</h2>
+<script>
+    function drawHeart(size) {
+        let heart = "";
+        for (let i = size / 2; i <= size; i += 2) {
+            heart += " ".repeat((size - i) / 2) + "*".repeat(i) + " ".repeat(size - i) + "*".repeat(i) + "\n";
+        }
+        for (let i = size; i >= 0; i--) {
+            heart += " ".repeat(size - i) + "*".repeat(i * 2 + 1) + "\n";
+        }
+        return heart;
+    }
+
+    const size = parseInt(prompt("Nhập kích thước của hình trái tim (số lẻ lớn hơn hoặc bằng 3):"));
+    if (size >= 3 && size % 2 === 1) {
+        document.write("<pre>" + drawHeart(size) + "</pre>");
+    } else {
+        document.write("Vui lòng nhập một số lẻ lớn hơn hoặc bằng 3.");
+    }
+</script>
+</body>
+</html>
