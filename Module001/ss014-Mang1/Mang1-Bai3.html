@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng 1- Bài 3</title>
+</head>
+<body>
+    <script>
+        // Bài 3: Tính trung bình cộng các phần tử trong mảng
+        let n = [];
+        let average = 0;
+        let sum = 0;
+        for (let i = 0; i < 5; i++) {
+            n[i] = parseInt(prompt("Nhập phần tử thứ " + (i + 1) + ":"));
+            sum += n[i];
+        }
+        average = sum / n.length;
+        console.log("Trung bình cộng các phần tử trong mảng là: " + average);
+    </script>
+</body>
+</html>
