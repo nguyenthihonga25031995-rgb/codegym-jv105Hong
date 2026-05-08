@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng 1- Bài 5</title>
+</head>
+<body>
+    <script>
+        // Bài 4: Đếm số lượng phần tử âm trong mảng
+        let n = [];
+        let count = 0;
+        for (let i = 0; i < 5; i++) {
+            n[i] = parseInt(prompt("Nhập phần tử thứ " + (i + 1) + ":"));
+            if (n[i] < 0) {
+                count++;
+            }
+        }
+        console.log("Số lượng phần tử âm trong mảng là: " + count);
+    </script>
+</body>
+</html>
