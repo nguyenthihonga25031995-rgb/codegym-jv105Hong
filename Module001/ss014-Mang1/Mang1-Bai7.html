@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng 1- Bài 7</title>
+</head>
+<body>
+    <script>
+        let n = [];
+        for (let i = 0; i < 10; i++) {
+            n[i] = parseInt(prompt("Nhập phần tử thứ " + (i + 1) + ":"));
+        }
+        let v = parseInt(prompt("Nhập số cần tìm:"));
+        // Tìm vị trí của v
+        let index = n.indexOf(v);
+        if (index !== -1) {
+            n.splice(index, 1)
+            n.push(0);
+            console.log("Mảng sau xóa " + v + " là: " + n);
+        } else {
+            console.log(v + " không có trong mảng.");
+        }
+    </script>
+</body>
+</html>
+
