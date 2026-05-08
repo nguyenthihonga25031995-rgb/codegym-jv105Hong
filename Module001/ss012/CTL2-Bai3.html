@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTL2-Bai3</title>
+</head>
+<body>
+    <h2> In tam giác vuông, các góc vuông ở vị trí khác nhau.</h2>
+    <script>
+        function drawTriangle(n, position) {
+            let result = "";
+
+            for (let i = 1; i <= n; i++) {
+                let stars, spaces;
+
+                switch (position) {
+                    case 1: // Trái dưới: tăng dần
+                        stars = i;
+                        spaces = 0;
+                        break;
+                    case 2: // Trái trên: giảm dần
+                        stars = n - i + 1;
+                        spaces = 0;
+                        break;
+                    case 3: // Phải dưới: tăng dần
+                        stars = i;
+                        spaces = n - i;
+                        break;
+                    case 4: // Phải trên: giảm dần
+                        stars = n - i + 1;
+                        spaces = i - 1;
+                        break;
+                 }
+
+             for (let j = 0; j < spaces; j++) {
+                result += "  ";
+            }
+            for (let j = 0; j < stars; j++) {
+                result += "* ";
+            }
+            result += "\n";
+            }
+
+            return result;
+        }
+
+        let n = parseInt(prompt("Nhập số hàng:"));
+        let pos = parseInt(prompt("Chọn vị trí góc vuông (1: trái dưới, 2: trái trên, 3: phải dưới, 4: phải trên):"));
+
+        document.write("<pre>" + drawTriangle(n, pos) + "</pre>");
+    </script>
+</body>
+</html>
