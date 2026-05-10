@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            background:white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: blue;
+        }
+        #txtSearchBox {
+            width: 80%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dictionary</h2>
+        <input type="text" id="txtSearchBox" name="inputBox">
+        <select id="selectLanguage">
+            <option value="en">Việt - Anh</option>
+            <option value="vi">Anh - Việt</option>
+        </select>
+        <button type="button" onclick="Search()">Search</button>
+        <div id="result"></div>
+        <script>
+            let english = ["hello", "goodbye", "thank you"];
+            let vietnamese = ["xin chào", "tạm biệt", "cảm ơn"];
+            function Search() {
+                let input = document.getElementById("txtSearchBox").value;
+                let language = document.getElementById("selectLanguage").value;
+                let result = "";
+                if (language === "en") {
+                    if (input === "xin chào") {
+                        result = "hello";
+                    } else if (input === "tạm biệt") {
+                        result = "goodbye";
+                    } else if (input === "cảm ơn") {
+                        result = "thank you";
+                    } else {
+                        result = "Không tìm thấy kết quả";
+                    }
+                } else if (language === "vi") {
+                    if (input === "hello") {
+                        result = "xin chào";
+                    } else if (input === "goodbye") {
+                        result = "tạm biệt";
+                    } else if (input === "thank you") {
+                        result = "cảm ơn";
+                    } else {
+                        result = "Không tìm thấy kết quả";
+                    }
+                }
+                document.getElementById("result").innerText = result;
+            }
+        </script>
+    </div>
+</body>
+</html>
